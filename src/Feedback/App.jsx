@@ -9,7 +9,7 @@ export default function App () {
   const [good, setGood] = useState(0);
   const [bad, setBad] = useState(0);
   const [neutral, setNeutral] = useState(0);
-   
+  
 
  const updatingState = (name) => {
    switch (name) {
@@ -35,7 +35,7 @@ export default function App () {
      return (
        <div>
        <Section title="Please leave feedback">
-       <FeedbackOptions options={['good', 'neutral', 'bad']} onLeaveFeedback={updatingState}/>
+       <FeedbackOptions options={Object.keys({ good, neutral, bad })} onLeaveFeedback={updatingState}/>
        </Section>
          <Section title="Statistics">
            {countTotalFeedback() ? ( <Statistics good={good} neutral={neutral} bad={bad} total={countTotalFeedback()} positivePercentage={countPositiveFeedbackPercentage()}/>) : (<Notification message="There is no feedback"/>)}
